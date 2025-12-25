@@ -1,0 +1,1141 @@
+
+    <!DOCTYPE html>
+
+    <!-- 1. Find your table memory data at line 612 of the original memories_history.html file -->
+    <!-- 2. Copy line 612 of memories_history.html -->
+    <!-- 3. Go to line 1095 of the present file, namely enhanced_memories_history.html -->
+    <!-- 4. Paste your table memory data into line 1095 of enhanced_memories_history.html -->
+    <!-- 5. Open enhanced_memories_history.html in your browser -->
+    <!-- 6. Download all your memories by month -->
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title></title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+        <style>
+            body {
+                font-size: 14px;
+                font-family: 'Avenir Next', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                margin: 20px auto;
+                width: 1200px;
+            }
+
+            b {
+                font-weight: 600;
+            }
+
+            table {
+                width: 100%;
+                table-layout: fixed;
+            }
+
+            .leftpanel {
+                height: 100vh;
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                width: 300px;
+                color: #6c6c6c;
+                overflow-y: auto;
+            }
+
+            .leftpanel a {
+                text-decoration: none;
+                color: #6c6c6c;
+            }
+
+            .leftpanel ul {
+                margin-left: 20px;
+                padding: 0;
+            }
+
+            .leftpanel li {
+                cursor: pointer;
+                display: block;
+                padding: 11px 16px;
+            }
+
+            .leftpanel li:hover {
+                background-color: #f3f3f3;
+            }
+
+            .leftpanel li.active {
+                background-color: #f3f3f3;
+            }
+
+            .rightpanel th {
+                text-align: left
+            }
+
+            .rightpanel {
+                padding-left: 310px;
+                padding-top: 5px;
+            }
+
+            .rightpanel th, td {
+                padding: 15px;
+                font-weight: normal;
+            }
+            .hidden-div {
+                display: none;
+            }
+
+            .bold-headers th {
+                font-weight: 600;
+            }
+            .single_chat {
+                display: flex;
+                justify-content: space-between;
+                padding: 14px 28px;
+                border: none;
+                background-color: #FFFFFF;
+                cursor: pointer;
+                width: 100%;
+
+            }
+            .thread-list {
+                border-bottom: 0.5px solid;
+            }
+
+            .single_chat:hover {
+                background-color: #e3e3e3;
+            }
+            .thread-list:last-child{
+                border: none;
+            }
+            .icons {
+                left: 50%;
+                transform: translate(120px, 0%);
+                position: absolute;
+                padding-top: 15px;
+            }
+            .back-button {
+                min-height:30px;
+                min-width: 120px;
+                border:none;
+                padding-top: 20px;
+                cursor: pointer;
+            }
+
+            .saved {
+                background: #FFFC00;
+                border-radius: 100px;
+                width: 66px;
+                height:28px;
+                border: none;
+                justify-content: center;
+                align-items: center;
+                font-family: 'Avenir Next';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 12px;
+                color: #845D00;
+                margin-top: 14px;
+                margin-right: 5px;
+                margin-bottom: 17px;
+            }
+
+        #clear-history-btn {
+            background: #DC3545;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        /* ==================== PROGRESS BAR STYLES ==================== */
+        #progress-container {
+            margin-top: 15px;
+            display: none;
+        }
+
+        #progress-bar-bg {
+            width: 100%;
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            width: 0%;
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        #progress-text {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #555;
+            text-align: center;
+        }
+        </style>
+    </head>
+    <html>
+    <body>
+    <div class="leftpanel"><ul><li><a href="faq.html">Frequently Asked Questions</a></li><li><a href="memories_history.html">Memories</a></li></ul></div><div class="rightpanel"><h1>Memories</h1><p><p><b>Note</b>: This section includes information about Memories you've saved in Snapchat. Download links below will expire 7 days from when your data file was made available to you. The Location column refers to your location when you saved a particular Memory. Similarly, the Date column shows the day and time a Memory was saved by you.</p><p>To ensure the fastest and most reliable download of your Memories, please connect to a stable Wi-Fi network. Downloads over a cellular connection may be significantly slower or interrupted. Additionally, it's crucial to keep this page open and your device unlocked until the download is complete. Closing this screen may pause the download, forcing it to resume later and delaying the process.</p></p><p class="important"></p><!-- JavaScript Disabled Warning --><noscript><div style=" background: #FFE6E6; border: 2px solid #FF0000; border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center; font-family: Arial, sans-serif; "><h2 style="color: #CC0000; margin-top: 0;">⚠️ JavaScript Required</h2><p style="font-size: 16px; margin-bottom: 15px; color: #333;"><strong>JavaScript is currently disabled in your browser.</strong></p><p style="font-size: 14px; margin-bottom: 15px; color: #666;">The download functionality on this page requires JavaScript to work properly. Without JavaScript enabled, you will not be able to:</p><ul style="text-align: left; max-width: 400px; margin: 0 auto 15px; color: #666;"><li>Use the "Download All" feature</li><li>See download progress and status</li><li>Track which files have been downloaded</li></ul><p style="font-size: 14px; color: #333;">You can also obtain your Memories in-App, in addition to the download links provided here. <b>Our support team does not have access to any Memories data that is not otherwise provided via these methods</b>.</p></div></noscript>
+    <style>
+        .require-js-enabled {
+            display: none;
+        }
+
+        /* ==================== CONTAINER STYLES ==================== */
+        #download-all-container {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* ==================== BUTTON STYLES ==================== */
+        #download-all-btn {
+            background: #0099FF;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        #download-all-btn:hover:not(:disabled) {
+            background: #0077CC;
+        }
+
+        #download-all-btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+
+        #stop-download-btn {
+            background: #FF6B00;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-left: 10px;
+            display: none;
+        }
+
+        #stop-download-btn:hover:not(:disabled) {
+            background: #E55A00;
+        }
+
+        #stop-download-btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+
+        #clear-history-btn {
+            background: #DC3545;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        /* ==================== PROGRESS BAR STYLES ==================== */
+        #progress-container {
+            margin-top: 15px;
+            display: none;
+        }
+
+        #progress-bar-bg {
+            width: 100%;
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            width: 0%;
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        #progress-text {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #555;
+            text-align: center;
+        }
+    </style>
+
+    <script>
+        // ==================== CONSTANTS ====================
+        var STORAGE_KEY = 'memories_downloaded_files';
+        var DOWNLOAD_DELAYS_MS = 2000;
+        var WARNING_POPUP_MS = 60000;
+
+        // ==================== GLOBAL STATE ====================
+        var totalDownloads = 0;
+        var completedDownloads = 0;
+        var isDownloadingAll = false;
+        var shouldStopDownloading = false;
+
+        // ==================== LOCAL STORAGE FUNCTIONS ====================
+        function getDownloadedFiles() {
+            try {
+                var downloaded = localStorage.getItem(STORAGE_KEY);
+                return downloaded ? JSON.parse(downloaded) : {};
+            } catch (e) {
+                return {};
+            }
+        }
+
+        function extractStorageKey(url) {
+            // For proxy URLs, extract sid parameter to save storage space
+            if (url.includes('proxy=true')) {
+                try {
+                    var urlObj = new URL(url);
+                    var sid = urlObj.searchParams.get('sid');
+                    return sid ? 'sid_' + sid : url; // Fallback to full URL if sid not found
+                } catch (e) {
+                    return url; // Fallback to full URL if URL parsing fails
+                }
+            }
+            // For non-proxy URLs, use the full URL
+            return url;
+        }
+
+        function markFileAsDownloaded(url) {
+            try {
+                var downloaded = getDownloadedFiles();
+                var key = extractStorageKey(url);
+                downloaded[key] = {
+                    timestamp: new Date().toISOString(),
+                    downloaded: true,
+                    originalUrl: url.includes('proxy=true') ? undefined : url // Only store original URL for non-proxy
+                };
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(downloaded));
+            } catch (e) {
+                console.error('Error saving to localStorage:', e);
+            }
+        }
+
+        function isFileDownloaded(url) {
+            var downloaded = getDownloadedFiles();
+            var key = extractStorageKey(url);
+            return downloaded[key] && downloaded[key].downloaded;
+        }
+
+        // ==================== HELPER FUNCTIONS ====================
+        function getAllDownloadLinks() {
+            // Find all download links in the memories table - look for both "Download" and "Downloaded" text
+            var allLinks = document.querySelectorAll('table a');
+            var downloadLinks = [];
+
+            for (var i = 0; i < allLinks.length; i++) {
+                var link = allLinks[i];
+                var text = link.innerText || link.textContent || '';
+                var normalizedText = text.toLowerCase().trim();
+
+                // Include links with "Download" text OR "Downloaded" text (for already completed ones)
+                if (normalizedText === 'download' || normalizedText.startsWith('downloaded')) {
+                    downloadLinks.push(link);
+                }
+            }
+
+            return downloadLinks;
+        }
+
+        function parseDownloadLink(link) {
+            var onclickAttr = link.getAttribute('onclick');
+
+            // All links now use onclick handler with downloadMemories
+            if (onclickAttr) {
+                var matches = onclickAttr.match(/downloadMemories\('(.+?)',\s*this,\s*(true|false)\)/);
+                if (matches) {
+                    var isGetRequest = matches[2] === 'true';
+                    return {
+                        url: matches[1],
+                        isGetRequest: isGetRequest
+                    };
+                }
+            }
+
+            return null;
+        }
+
+        function getAlreadyDownloadedCount() {
+            var count = 0;
+            getAllDownloadLinks().forEach(function(link) {
+                var parsed = parseDownloadLink(link);
+                if (parsed && isFileDownloaded(parsed.url)) {
+                    count++;
+                }
+            });
+            return count;
+        }
+
+        function updateLinkAsDownloaded(linkElement) {
+            linkElement.innerText = "Downloaded ✓";
+            linkElement.style.color = "#4CAF50";
+            linkElement.style.textDecoration = "none";
+            linkElement.style.pointerEvents = "auto";
+        }
+
+        function updateStatusDisplay(downloaded, total) {
+            var statusDiv = document.getElementById("download-status");
+            if (statusDiv && downloaded > 0) {
+                statusDiv.innerHTML = '<strong style="color: #4CAF50;">✓ ' + downloaded +
+                    ' of ' + total + ' downloaded</strong>';
+            }
+        }
+
+        // ==================== UI UPDATE FUNCTIONS ====================
+        function updateProgressBar() {
+            if (totalDownloads === 0) return;
+
+            var percentage = Math.ceil((completedDownloads / totalDownloads) * 100);
+            var progressFill = document.getElementById("progress-bar-fill");
+            var progressText = document.getElementById("progress-text");
+
+            if (!progressFill || !progressText) return;
+
+            progressFill.style.width = percentage + "%";
+            progressFill.innerText = percentage + "%";
+
+            // Update text if not showing warning
+            if (completedDownloads > 0 && !progressText.innerHTML.includes("⚠️")) {
+                progressText.innerText = completedDownloads + " of " + totalDownloads + " completed";
+            }
+
+            updateStatusDisplay(completedDownloads, totalDownloads);
+
+            // Handle completion
+            if (completedDownloads === totalDownloads) {
+                progressText.innerHTML = "<strong style='color: #4CAF50;'>All downloads complete! ✓</strong>";
+                setTimeout(resetDownloadState, 3000);
+            }
+        }
+
+        function initializeDownloadStatus() {
+            var downloadLinks = getAllDownloadLinks();
+            var alreadyDownloaded = 0;
+
+            downloadLinks.forEach(function(link) {
+                var parsed = parseDownloadLink(link);
+                if (parsed && isFileDownloaded(parsed.url)) {
+                    updateLinkAsDownloaded(link);
+                    alreadyDownloaded++;
+                }
+            });
+
+            updateStatusDisplay(alreadyDownloaded, downloadLinks.length);
+        }
+
+        // ==================== DOWNLOAD FUNCTIONS ====================
+        function triggerFileDownload(url) {
+            var anchor = document.createElement("a");
+            anchor.href = url;
+            anchor.download = "";
+            anchor.style.display = "none";
+            document.body.appendChild(anchor);
+            anchor.click();
+            document.body.removeChild(anchor);
+        }
+
+        function downloadMemoriesSequential(url, linkElement, isGetRequest, callback) {
+            var originalText = linkElement.innerText;
+            linkElement.innerText = "Downloading...";
+            linkElement.style.pointerEvents = "none";
+
+            if (isGetRequest) {
+                // Must use XMLHttpRequest to send custom headers
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("GET", url, true);
+                xhttp.setRequestHeader("X-Snap-Route-Tag", "mem-dmd");
+                xhttp.responseType = 'blob';
+                xhttp.onreadystatechange = function () {
+                    if (xhttp.readyState !== 4) return;
+
+                    if (xhttp.status === 200) {
+                        // Create blob URL and trigger download
+                        var blob = xhttp.response;
+                        var blobUrl = window.URL.createObjectURL(blob);
+                        triggerFileDownload(blobUrl);
+                        window.URL.revokeObjectURL(blobUrl); // Clean up
+
+                        updateLinkAsDownloaded(linkElement);
+                        markFileAsDownloaded(url);
+                        document.getElementById("mem-info-bar").innerText = "";
+                    } else if (xhttp.status >= 400) {
+                        document.getElementById("mem-info-bar").innerText = "Download failed.";
+                        linkElement.innerText = originalText;
+                        linkElement.style.pointerEvents = "auto";
+                    }
+
+                    if (isDownloadingAll) {
+                        completedDownloads++;
+                        updateProgressBar();
+                    }
+
+                    setTimeout(callback, DOWNLOAD_DELAYS_MS);
+                };
+                xhttp.send();
+            } else {
+                // For POST requests (proxy downloads)
+                var parts = url.split("?");
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("POST", parts[0], true);
+                xhttp.onreadystatechange = function () {
+                    if (xhttp.readyState !== 4) return;
+
+                    if (xhttp.status === 200) {
+                        triggerFileDownload(xhttp.responseText);
+                        updateLinkAsDownloaded(linkElement);
+                        markFileAsDownloaded(url);
+                        document.getElementById("mem-info-bar").innerText = "";
+                    } else if (xhttp.status >= 400) {
+                        document.getElementById("mem-info-bar").innerText = "Download failed.";
+                        linkElement.innerText = originalText;
+                        linkElement.style.pointerEvents = "auto";
+                    }
+
+                    if (isDownloadingAll) {
+                        completedDownloads++;
+                        updateProgressBar();
+                    }
+
+                    setTimeout(callback, DOWNLOAD_DELAYS_MS);
+                };
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send(parts[1]);
+            }
+        }
+
+        function downloadMemories(url, linkElement, isGetRequest) {
+            downloadMemoriesSequential(url, linkElement, isGetRequest, function() {
+                if (!isDownloadingAll) {
+                    var downloadLinks = getAllDownloadLinks();
+                    updateStatusDisplay(getAlreadyDownloadedCount(), downloadLinks.length);
+                }
+            });
+        }
+
+        // ==================== FILENAME GENERATION ====================
+        async function extractAndDetectFile(blob, originalMediaType) {
+            // Check if the blob is actually a ZIP file
+            if (blob.type === 'application/zip' || blob.type === 'application/x-zip-compressed') {
+                try {
+                    console.log('Extracting ZIP file...');
+                    const zip = await JSZip.loadAsync(blob);
+                    
+                    // Get the first (and usually only) file from the ZIP
+                    const files = Object.keys(zip.files);
+                    if (files.length > 0) {
+                        const firstFile = zip.files[files[0]];
+                        if (!firstFile.dir) {
+                            const extractedBlob = await firstFile.async('blob');
+                            console.log('Extracted file - MIME type:', extractedBlob.type, 'Size:', extractedBlob.size);
+                            
+                            // Now detect the actual format of the extracted file
+                            const extension = await detectFileExtension(extractedBlob, originalMediaType);
+                            return { blob: extractedBlob, extension: extension };
+                        }
+                    }
+                } catch (error) {
+                    console.error('Failed to extract ZIP:', error);
+                }
+            }
+            
+            // If not a ZIP or extraction failed, detect format of original blob
+            const extension = await detectFileExtension(blob, originalMediaType);
+            return { blob: blob, extension: extension };
+        }
+
+        function detectFileExtension(blob, mediaType) {
+            return new Promise((resolve) => {
+                if (mediaType.toLowerCase() === 'video') {
+                    // For videos, check MIME type first
+                    if (blob.type.includes('mp4')) resolve('mp4');
+                    else if (blob.type.includes('webm')) resolve('webm');
+                    else if (blob.type.includes('mov')) resolve('mov');
+                    else if (blob.type.includes('avi')) resolve('avi');
+                    else resolve('mp4'); // default
+                    return;
+                }
+                
+                // For images, first check MIME type
+                if (blob.type.includes('webp')) {
+                    resolve('webp');
+                    return;
+                } else if (blob.type.includes('png')) {
+                    resolve('png');
+                    return;
+                } else if (blob.type.includes('gif')) {
+                    resolve('gif');
+                    return;
+                } else if (blob.type.includes('heic') || blob.type.includes('heif')) {
+                    resolve('heic');
+                    return;
+                } else if (blob.type.includes('jpeg') || blob.type.includes('jpg')) {
+                    resolve('jpg');
+                    return;
+                }
+                
+                // If MIME type doesn't help, check file header
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const arr = new Uint8Array(e.target.result.slice(0, 20));
+                    let header = '';
+                    for (let i = 0; i < arr.length; i++) {
+                        header += arr[i].toString(16).padStart(2, '0');
+                    }
+                    
+                    console.log('File header:', header);
+                    
+                    // Check file signatures (magic numbers)
+                    if (header.startsWith('ffd8ff')) {
+                        console.log('Detected: JPEG');
+                        resolve('jpg');
+                    } else if (header.startsWith('89504e47')) {
+                        console.log('Detected: PNG');
+                        resolve('png');
+                    } else if (header.startsWith('474946')) {
+                        console.log('Detected: GIF');
+                        resolve('gif');
+                    } else if (header.startsWith('52494646')) {
+                        // RIFF header, check for WebP
+                        if (header.includes('57454250')) {
+                            console.log('Detected: WebP');
+                            resolve('webp');
+                        } else {
+                            console.log('Detected: RIFF (unknown), defaulting to jpg');
+                            resolve('jpg');
+                        }
+                    } else if (header.startsWith('424d')) {
+                        console.log('Detected: BMP');
+                        resolve('bmp');
+                    } else if (header.includes('66747970')) { // ftypheic or similar
+                        console.log('Detected: HEIC/HEIF');
+                        resolve('heic');
+                    } else {
+                        console.log('Unknown format, defaulting to jpg. Header:', header, 'MIME:', blob.type);
+                        resolve('jpg');
+                    }
+                };
+                reader.readAsArrayBuffer(blob.slice(0, 20));
+            });
+        }
+
+        function generateProperFilename(dateStr, mediaType, index, extension = null) {
+            // Parse date like "2024-11-27 17:32:47 UTC"
+            const date = new Date(dateStr);
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            const seconds = String(date.getSeconds()).padStart(2, '0');
+            
+            const indexPadded = String(index).padStart(3, '0');
+            const fileExtension = extension || (mediaType.toLowerCase() === 'image' ? 'jpg' : 'mp4');
+            
+            return `${year}-${month}-${day}_${hours}-${minutes}-${seconds}_${mediaType}_${indexPadded}.${fileExtension}`;
+        }
+
+        function extractMemoryData() {
+            const memories = [];
+            const rows = document.querySelectorAll('table tbody tr');
+            let counter = 1;
+            
+            for (let i = 1; i < rows.length; i++) { // Skip header row
+                const row = rows[i];
+                const cells = row.cells;
+                if (cells.length >= 4) {
+                    const dateStr = cells[0].textContent.trim();
+                    const mediaType = cells[1].textContent.trim();
+                    const downloadLink = cells[3].querySelector('a[onclick*="downloadMemories"]');
+                    
+                    if (downloadLink) {
+                        const onclickAttr = downloadLink.getAttribute('onclick');
+                        const urlMatch = onclickAttr.match(/downloadMemories\('([^']+)'/);
+                        
+                        if (urlMatch) {
+                            const date = new Date(dateStr);
+                            memories.push({
+                                date: dateStr,
+                                dateObj: date,
+                                mediaType: mediaType,
+                                url: urlMatch[1],
+                                filename: generateProperFilename(dateStr, mediaType, counter),
+                                year: date.getFullYear(),
+                                month: date.getMonth() + 1
+                            });
+                            counter++;
+                        }
+                    }
+                }
+            }
+            
+            return memories;
+        }
+
+        function groupMemoriesByMonth(memories) {
+            const groups = {};
+            
+            memories.forEach(memory => {
+                const key = `${memory.year}-${String(memory.month).padStart(2, '0')}`;
+                if (!groups[key]) {
+                    groups[key] = [];
+                }
+                groups[key].push(memory);
+            });
+            
+            return groups;
+        }
+
+        // ==================== ZIP DOWNLOAD FUNCTIONS ====================
+        async function downloadMemoriesAsZip(memories, zipBaseName, onProgress, allowMultipleParts = false) {
+            let allCompleted = 0;
+            const total = memories.length;
+            const maxZipSize = 500 * 1024 * 1024; // 500MB limit
+            let partNumber = 1;
+            let remainingMemories = [...memories];
+            
+            onProgress(0, total, 'Starting download...');
+            
+            while (remainingMemories.length > 0) {
+                const zip = new JSZip();
+                let currentSize = 0;
+                let partCompleted = 0;
+                let currentBatch = [];
+                
+                // Build current ZIP until size limit or no more files
+                for (let i = 0; i < remainingMemories.length; i++) {
+                    const memory = remainingMemories[i];
+                    try {
+                        onProgress(allCompleted + partCompleted, total, `Part ${partNumber}: Downloading file ${partCompleted + 1}...`);
+                        
+                        const response = await fetch(memory.url);
+                        if (!response.ok) {
+                            throw new Error(`HTTP ${response.status}`);
+                        }
+                        
+                        const rawBlob = await response.blob();
+                        const { blob: actualBlob, extension: actualExtension } = await extractAndDetectFile(rawBlob, memory.mediaType);
+                        
+                        // Check if adding this file would exceed size limit
+                        if (currentSize + actualBlob.size > maxZipSize && partCompleted > 0) {
+                            console.log(`Part ${partNumber}: Size limit reached with ${partCompleted} files`);
+                            break; // Start new ZIP with remaining files
+                        }
+                        
+                        const correctedFilename = generateProperFilename(
+                            memory.date, 
+                            memory.mediaType, 
+                            allCompleted + partCompleted + 1, 
+                            actualExtension
+                        );
+                        
+                        zip.file(correctedFilename, actualBlob);
+                        currentSize += actualBlob.size;
+                        partCompleted++;
+                        currentBatch.push(memory);
+                        
+                        onProgress(allCompleted + partCompleted, total, `Part ${partNumber}: Added ${correctedFilename}`);
+                        
+                        // Small delay to prevent browser freezing
+                        await new Promise(resolve => setTimeout(resolve, 100));
+                        
+                    } catch (error) {
+                        console.error(`Failed to download file ${allCompleted + partCompleted + 1}:`, error);
+                        onProgress(allCompleted + partCompleted, total, `⚠️ Part ${partNumber}: Failed file ${partCompleted + 1}`);
+                        currentBatch.push(memory); // Still count as processed to avoid infinite loop
+                        partCompleted++;
+                    }
+                }
+                
+                if (partCompleted === 0) {
+                    console.error('No files could be added to ZIP part', partNumber);
+                    break; // Avoid infinite loop
+                }
+                
+                // Create and download current part
+                const zipName = allowMultipleParts && (partNumber > 1 || remainingMemories.length > currentBatch.length) 
+                    ? `${zipBaseName}_Part${partNumber}.zip` 
+                    : `${zipBaseName}.zip`;
+                    
+                onProgress(allCompleted + partCompleted, total, `Creating ${zipName}...`);
+                
+                const zipBlob = await zip.generateAsync({
+                    type: 'blob',
+                    compression: 'DEFLATE',
+                    compressionOptions: { level: 6 }
+                });
+                
+                const url = URL.createObjectURL(zipBlob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = zipName;
+                a.click();
+                URL.revokeObjectURL(url);
+                
+                // Update counters and prepare for next part
+                allCompleted += partCompleted;
+                remainingMemories = remainingMemories.slice(currentBatch.length);
+                partNumber++;
+                
+                onProgress(allCompleted, total, `Downloaded ${zipName} (${partCompleted} files)`);
+                
+                // If not allowing multiple parts or no more files, break
+                if (!allowMultipleParts || remainingMemories.length === 0) {
+                    break;
+                }
+                
+                // Small delay between parts
+                await new Promise(resolve => setTimeout(resolve, 1000));
+            }
+            
+            return allCompleted;
+        }
+
+        async function downloadByMonth(yearMonth) {
+            const memories = extractMemoryData();
+            const groups = groupMemoriesByMonth(memories);
+            const targetGroup = groups[yearMonth];
+            
+            if (!targetGroup || targetGroup.length === 0) {
+                alert('No memories found for the selected month.');
+                return;
+            }
+            
+            const zipBaseName = `Snapchat_Memories_${yearMonth}`;
+            
+            // Show progress
+            document.getElementById('progress-container').style.display = 'block';
+            document.getElementById('download-all-btn').disabled = true;
+            
+            try {
+                const downloaded = await downloadMemoriesAsZip(targetGroup, zipBaseName, 
+                    (completed, total, status) => {
+                        const progressFill = document.getElementById('progress-bar-fill');
+                        const progressText = document.getElementById('progress-text');
+                        const percentage = Math.round((completed / total) * 100);
+                        
+                        progressFill.style.width = percentage + '%';
+                        progressFill.textContent = percentage + '%';
+                        progressText.textContent = `${status} (${completed}/${total})`;
+                    }, true // Allow multiple parts for month downloads
+                );
+                
+                const message = downloaded === targetGroup.length 
+                    ? `✅ Successfully downloaded all ${downloaded} memories for ${yearMonth}!`
+                    : `⚠️ Downloaded ${downloaded} of ${targetGroup.length} memories for ${yearMonth}`;
+                    
+                document.getElementById('progress-text').innerHTML = 
+                    `<strong style="color: green;">${message}</strong>`;
+                    
+            } catch (error) {
+                console.error('Download failed:', error);
+                document.getElementById('progress-text').innerHTML = 
+                    '<strong style="color: red;">❌ Download failed. Please try again.</strong>';
+            } finally {
+                document.getElementById('download-all-btn').disabled = false;
+                setTimeout(() => {
+                    document.getElementById('progress-container').style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        async function downloadAllAsZip() {
+            const memories = extractMemoryData();
+            
+            if (memories.length === 0) {
+                alert('No memories found to download.');
+                return;
+            }
+            
+            const zipBaseName = `Snapchat_Memories_All`;
+            
+            // Show progress
+            document.getElementById('progress-container').style.display = 'block';
+            document.getElementById('download-all-btn').disabled = true;
+            
+            try {
+                const downloaded = await downloadMemoriesAsZip(memories, zipBaseName, 
+                    (completed, total, status) => {
+                        const progressFill = document.getElementById('progress-bar-fill');
+                        const progressText = document.getElementById('progress-text');
+                        const percentage = Math.round((completed / total) * 100);
+                        
+                        progressFill.style.width = percentage + '%';
+                        progressFill.textContent = percentage + '%';
+                        progressText.textContent = `${status} (${completed}/${total})`;
+                    }, true // Allow multiple parts for all downloads too
+                );
+                
+                const message = downloaded === memories.length 
+                    ? `✅ Successfully downloaded all ${downloaded} memories!`
+                    : `⚠️ Downloaded ${downloaded} of ${memories.length} memories`;
+                    
+                document.getElementById('progress-text').innerHTML = 
+                    `<strong style="color: green;">${message}</strong>`;
+                    
+            } catch (error) {
+                console.error('Download failed:', error);
+                document.getElementById('progress-text').innerHTML = 
+                    '<strong style="color: red;">❌ Download failed. Please try again.</strong>';
+            } finally {
+                document.getElementById('download-all-btn').disabled = false;
+                setTimeout(() => {
+                    document.getElementById('progress-container').style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        function showMonthSelector() {
+            const memories = extractMemoryData();
+            const groups = groupMemoriesByMonth(memories);
+            const months = Object.keys(groups).sort().reverse();
+            
+            if (months.length === 0) {
+                alert('No memories found.');
+                return;
+            }
+            
+            let html = '<div style="max-height: 300px; overflow-y: auto;"><h3>Select Month to Download:</h3>';
+            
+            months.forEach(month => {
+                const count = groups[month].length;
+                const [year, monthNum] = month.split('-');
+                const monthName = new Date(year, monthNum - 1, 1).toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+                
+                html += `<div style="margin: 10px 0; padding: 10px; border: 1px solid #ccc; border-radius: 5px; cursor: pointer; background: #f9f9f9;" onclick="selectMonth('${month}')">`;
+                html += `<strong>${monthName}</strong> - ${count} memories`;
+                html += `</div>`;
+            });
+            
+            html += '</div>';
+            html += '<button onclick="closeMonthSelector()" style="margin-top: 10px; padding: 8px 16px;">Cancel</button>';
+            
+            const modal = document.createElement('div');
+            modal.id = 'month-selector-modal';
+            modal.style.cssText = `
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.5); z-index: 10000;
+                display: flex; align-items: center; justify-content: center;
+            `;
+            
+            const content = document.createElement('div');
+            content.style.cssText = `
+                background: white; padding: 20px; border-radius: 10px;
+                max-width: 500px; width: 90%; max-height: 80%;
+                overflow-y: auto;
+            `;
+            
+            content.innerHTML = html;
+            modal.appendChild(content);
+            document.body.appendChild(modal);
+        }
+        
+        function selectMonth(yearMonth) {
+            closeMonthSelector();
+            downloadByMonth(yearMonth);
+        }
+        
+        function closeMonthSelector() {
+            const modal = document.getElementById('month-selector-modal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+
+        // ==================== BATCH DOWNLOAD FUNCTIONS ====================
+        function stopDownloading() {
+            shouldStopDownloading = true;
+            var progressText = document.getElementById("progress-text");
+            if (progressText) {
+                progressText.innerHTML = '<strong style="color: #FF6B00;">⚠️ Stopping downloads...</strong>';
+            }
+            document.getElementById("stop-download-btn").disabled = true;
+        }
+
+
+        function stopDownloadState() {
+            // Reset UI but preserve download counts for restart
+            document.getElementById("progress-container").style.display = "none";
+            document.getElementById("download-all-btn").disabled = false;
+            document.getElementById("stop-download-btn").style.display = "none";
+            isDownloadingAll = false;
+            shouldStopDownloading = false;
+        }
+
+        function downloadAll() {
+            var downloadLinks = Array.from(getAllDownloadLinks());
+
+            // Always use the full count as total (not just remaining files)
+            totalDownloads = downloadLinks.length;
+            completedDownloads = getAlreadyDownloadedCount();
+
+            if (completedDownloads === totalDownloads) {
+                alert('All files have already been downloaded!');
+                return;
+            }
+
+            isDownloadingAll = true;
+            shouldStopDownloading = false;
+
+            document.getElementById("progress-container").style.display = "block";
+            document.getElementById("download-all-btn").disabled = true;
+            document.getElementById("stop-download-btn").style.display = "inline-block";
+            document.getElementById("stop-download-btn").disabled = false;
+            document.getElementById("progress-text").innerHTML =
+                '<strong style="color: #FF6B00;">⚠️ Your browser may ask permission to download multiple files. Please click "Allow".</strong>';
+
+            updateProgressBar();
+
+            // Hide warning after 1 minute
+            setTimeout(function() {
+                if (completedDownloads < totalDownloads && !shouldStopDownloading) {
+                    document.getElementById("progress-text").innerText =
+                        completedDownloads + " of " + totalDownloads + " completed";
+                }
+            }, WARNING_POPUP_MS);
+
+            // Sequential download processor
+            function downloadNext(index) {
+                // Check if we should stop
+                if (shouldStopDownloading) {
+                    var progressText = document.getElementById("progress-text");
+                    if (progressText) {
+                        progressText.innerHTML = '<strong style="color: #FF6B00;">Downloads stopped. ' +
+                            completedDownloads + ' of ' + totalDownloads + ' completed.</strong>';
+                    }
+                    setTimeout(stopDownloadState, 1000);
+                    return;
+                }
+
+                if (index >= downloadLinks.length) return;
+
+                var link = downloadLinks[index];
+                var parsed = parseDownloadLink(link);
+
+                if (!parsed) {
+                    setTimeout(function() { downloadNext(index + 1); }, DOWNLOAD_DELAYS_MS);
+                    return;
+                }
+
+                // Skip already downloaded files
+                if (isFileDownloaded(parsed.url)) {
+                    downloadNext(index + 1);
+                    return;
+                }
+
+                downloadMemoriesSequential(parsed.url, link, parsed.isGetRequest, function() {
+                    // Check again before scheduling next download
+                    if (shouldStopDownloading) {
+                        downloadNext(index + 1); // Trigger the stop handler
+                        return;
+                    }
+                });
+                setTimeout(function() { downloadNext(index + 1); }, DOWNLOAD_DELAYS_MS);
+            }
+
+            downloadNext(0);
+        }
+
+
+        // ==================== INITIALIZATION ====================
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeDownloadStatus);
+            // Show JavaScript-enhanced download links
+            document.addEventListener('DOMContentLoaded', function() {
+                var jsOnlyElements = document.querySelectorAll('.require-js-enabled');
+                jsOnlyElements.forEach(function(element) {
+                    element.style.display = 'inline';
+                });
+            });
+        } else {
+            initializeDownloadStatus();
+        }
+    </script>
+
+    <!---->
+    <!------->
+    <!----------->
+    <!--------------->
+    <!------------------->
+    <!----------------------->
+    <!--------------------------->
+    <!-- PASTE YOUR TABLE DATA HERE -->
+    <!--------------------------->
+    <!----------------------->
+    <!------------------->
+    <!--------------->
+    <!----------->
+    <!------->
+    <!---->
+
+    <script>
+
+        const navigationItems = document.querySelectorAll('.leftpanel li');
+        navigationItems.forEach(item => {
+            const link = item.querySelector('a');
+            const linkHref = link.getAttribute('href');
+            const currentUrl = window.location.pathname;
+
+            if (currentUrl.endsWith(linkHref)) {
+                item.classList.add('active'); // Add 'active' class to the <li> element
+            }
+
+            item.addEventListener('click', function(event) {
+                event.preventDefault();
+                if(currentUrl.includes("subpage")){
+                    const newHref = "../"+linkHref;
+                     // Navigate to the new HTML page from one of the chat/snap subpages
+                    window.location.href = newHref;
+                }else{
+                    // Navigate to the new HTML page
+                    window.location.href = linkHref;
+                }
+            });
+        });
+
+
+
+        // Scroll to the active navigation item on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const activeLink = document.querySelector('.leftpanel li.active');
+            if (activeLink) {
+                const linkRect = activeLink.getBoundingClientRect();
+                if (linkRect.top < 0 || linkRect.bottom > window.innerHeight) {
+                    activeLink.scrollIntoView({ behavior: 'auto' });
+                }
+            }
+        });
+    </script></html>

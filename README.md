@@ -6,3 +6,7 @@ The memories can be exported and downloaded, but the functionalities are very li
 In my opinion, this is intentional in order to force users to choose to pay the subscription fee instead.
 
 In collaboration with Copilot (Claude Sonnet 4), we made some adjustments to the original memories_history.html to enhance the dowloading experience and make it faster, organized, and more efficient.
+
+For common users: take a look at README_BASIC.md for how to download Snapchat memories efficiently.
+
+For users with some programming knowledge: take a look at README_TECHNICAL.md to understand the changes we made.

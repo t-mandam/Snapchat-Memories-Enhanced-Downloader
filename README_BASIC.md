@@ -75,7 +75,7 @@ This tool helps you download **all your Snapchat photos and videos** to your com
 - **Pick a month** from the list (like "November 2024 - 45 memories")
 - Wait for that month to download as a ZIP file
 - Repeat for other months you want
-*Note: At the 500MB mark, memories will be dowloaded in parts (Part1.zip, Part2.zip, etc.)*
+- *Note: At the 500MB mark, memories will be dowloaded in parts (Part1.zip, Part2.zip, etc.)*
 
 #### 📥 Option 3: "Individual Files" (Slowest but Most Control)
 - **Click "Individual Files"**
@@ -163,5 +163,6 @@ Once your downloads finish:
 - Give it a star ⭐ on GitHub
 
 ---
+
 
 *Made with ❤️ to help you get your memories back!*
